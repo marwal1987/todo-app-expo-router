@@ -19,4 +19,4 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 # TODO
 
-### Create SectionList in home and connect 'done' from detail. Separate styling when done?
+## Create SectionList in home and connect 'done' from detail. Separate styling on mark-done
