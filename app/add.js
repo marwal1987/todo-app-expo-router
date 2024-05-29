@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { useRouter } from "expo-router";
-import { TodosContext } from "./TodosContext";
+import { TodosContext } from "../contexts/TodosContext";
 
 export default function Add() {
   const [text, setText] = useState("");

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useRouter } from "expo-router";
-import { TodosContext } from "./TodosContext";
+import { TodosContext } from "../contexts/TodosContext";
 import {
   StyleSheet,
   Text,

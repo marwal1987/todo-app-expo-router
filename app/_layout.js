@@ -7,18 +7,21 @@ export default function RootLayout() {
   const router = useRouter();
   return (
     <TodosProvider>
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#456789",
+          },
+          headerTintColor: "#ddd",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      >
         <Stack.Screen
           name="index"
           options={{
             title: "Welcome",
-            headerStyle: {
-              backgroundColor: "#456789",
-            },
-            headerTintColor: "#ddd",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
           }}
         />
         <Stack.Screen
@@ -28,26 +31,12 @@ export default function RootLayout() {
             headerRight: () => (
               <Button title=" + " onPress={() => router.push("/add")} />
             ),
-            headerStyle: {
-              backgroundColor: "#456789",
-            },
-            headerTintColor: "#ddd",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
           }}
         />
         <Stack.Screen
           name="detail"
           options={{
             title: "Detail",
-            headerStyle: {
-              backgroundColor: "#456789",
-            },
-            headerTintColor: "#ddd",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
           }}
         />
         <Stack.Screen
@@ -55,13 +44,6 @@ export default function RootLayout() {
           options={{
             presentation: "modal",
             title: "Add Todo",
-            headerStyle: {
-              backgroundColor: "#456789",
-            },
-            headerTintColor: "#ddd",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
           }}
         />
       </Stack>

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { TodosContext } from "./TodosContext";
+import { TodosContext } from "../contexts/TodosContext";
 import { useRouter } from "expo-router";
 
 export default function Detail() {
