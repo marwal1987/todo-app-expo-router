@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import CustomButton from "../components/CustomButton";
 import { useRouter } from "expo-router";
 import { TodosContext } from "../contexts/TodosContext";
 
@@ -9,7 +10,7 @@ export default function Add() {
   const { setTodos } = useContext(TodosContext);
   const router = useRouter();
 
-  const addTodo = () => {
+  function addTodo() {
     if (text) {
       setTodos((prevTodos) => [
         ...prevTodos,
@@ -17,25 +18,37 @@ export default function Add() {
       ]);
       router.back();
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.largeText}>New Todo</Text>
+      <Text style={styles.largeText}>Create Todo</Text>
       <TextInput
         style={styles.input}
         value={text}
         onChangeText={setText}
-        placeholder="Enter todo"
+        placeholder="Title"
       />
       <TextInput
+        multiline={true}
+        numberOfLines={10}
         style={styles.input}
         value={description}
         onChangeText={setDescription}
-        placeholder="Enter description"
+        placeholder="Description"
       />
-      <Button title="Done" onPress={addTodo} />
-      <Button title="Dismiss" onPress={() => router.back()} />
+      <CustomButton
+        bgColor="#e8c128"
+        width={`70%`}
+        rounded={50}
+        onPress={addTodo}
+      >Add</CustomButton>
+      <CustomButton
+        bgColor="#9c64ce"
+        width={`70%`}
+        rounded={50}
+        onPress={() => router.back()}
+      >Dismiss</CustomButton>
     </View>
   );
 }
@@ -50,9 +63,9 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 2,
+    borderColor: "#ddd",
+    borderWidth: 2,
+    borderRadius: 4,
     marginBottom: 16,
     paddingHorizontal: 8,
     width: "70%",

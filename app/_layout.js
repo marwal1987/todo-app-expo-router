@@ -1,5 +1,7 @@
 import { Stack } from "expo-router";
-import { TodosProvider } from "./TodosContext";
+import { TodosProvider } from "../contexts/TodosContext";
+import Icon from "react-native-vector-icons/FontAwesome";
+import CustomButton from "../components/CustomButton"
 import { Button } from "react-native";
 import { useRouter } from "expo-router";
 
@@ -10,9 +12,9 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#456789",
+            backgroundColor: "#e8c128",
           },
-          headerTintColor: "#ddd",
+          headerTintColor: "#222",
           headerTitleStyle: {
             fontWeight: "bold",
           },
@@ -21,7 +23,8 @@ export default function RootLayout() {
         <Stack.Screen
           name="index"
           options={{
-            title: "Welcome",
+            title: "",
+            headerShown: false,
           }}
         />
         <Stack.Screen
@@ -29,7 +32,10 @@ export default function RootLayout() {
           options={{
             title: "Home",
             headerRight: () => (
-              <Button title=" + " onPress={() => router.push("/add")} />
+              <CustomButton color="#9c64ce"
+              onPress={() => router.push("/add")}>
+                <Icon name="plus" size={15} color="#222" />
+              </CustomButton>
             ),
           }}
         />
@@ -43,7 +49,7 @@ export default function RootLayout() {
           name="add"
           options={{
             presentation: "modal",
-            title: "Add Todo",
+            title: "New Todo",
           }}
         />
       </Stack>
