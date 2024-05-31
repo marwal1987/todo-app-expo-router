@@ -30,8 +30,6 @@ export default function Add() {
         placeholder="Title"
       />
       <TextInput
-        multiline={true}
-        numberOfLines={10}
         style={styles.input}
         value={description}
         onChangeText={setDescription}
@@ -39,16 +37,20 @@ export default function Add() {
       />
       <CustomButton
         bgColor="#e8c128"
-        width={`70%`}
+        width={`90%`}
         rounded={50}
         onPress={addTodo}
-      >Add</CustomButton>
+      >
+        Done
+      </CustomButton>
       <CustomButton
         bgColor="#9c64ce"
-        width={`70%`}
+        width={`90%`}
         rounded={50}
         onPress={() => router.back()}
-      >Dismiss</CustomButton>
+      >
+        Dismiss
+      </CustomButton>
     </View>
   );
 }
@@ -66,14 +68,14 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     borderWidth: 2,
     borderRadius: 4,
-    marginBottom: 16,
+    marginBottom: 8,
     paddingHorizontal: 8,
-    width: "70%",
+    width: "90%",
+    fontFamily: "Handlee_400Regular",
+    fontSize: 18,
   },
   largeText: {
-    fontSize: 24,
-  },
-  mediumText: {
-    fontSize: 18,
+    fontSize: 32,
+    fontFamily: "Handlee_400Regular",
   },
 });

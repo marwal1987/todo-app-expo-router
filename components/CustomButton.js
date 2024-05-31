@@ -2,12 +2,12 @@ import React from 'react';
 import { Text, StyleSheet, Pressable } from 'react-native';
 
 export default function Button(props) {
-  const { onPress, children, textColor, bgColor, rounded, py, width } = props;
+  const { onPress, children, textColor, bgColor, rounded, py, px, width } = props;
   const styles = StyleSheet.create({
     button: {
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: 12,
+      paddingVertical: px || 12,
       paddingHorizontal: py,
       borderRadius: rounded,
       elevation: 3,

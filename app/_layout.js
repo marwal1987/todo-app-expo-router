@@ -2,11 +2,16 @@ import { Stack } from "expo-router";
 import { TodosProvider } from "../contexts/TodosContext";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CustomButton from "../components/CustomButton"
-import { Button } from "react-native";
 import { useRouter } from "expo-router";
+import { useFonts, Handlee_400Regular } from '@expo-google-fonts/handlee';
 
 export default function RootLayout() {
   const router = useRouter();
+
+ useFonts({
+    Handlee_400Regular,
+  });
+
   return (
     <TodosProvider>
       <Stack
@@ -18,6 +23,7 @@ export default function RootLayout() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          
         }}
       >
         <Stack.Screen
@@ -32,9 +38,9 @@ export default function RootLayout() {
           options={{
             title: "Home",
             headerRight: () => (
-              <CustomButton color="#9c64ce"
+              <CustomButton bgColor="#9c64ce" py={12} px={8} rounded={50}
               onPress={() => router.push("/add")}>
-                <Icon name="plus" size={15} color="#222" />
+                <Icon name="plus" size={15} color="#222222aa" />
               </CustomButton>
             ),
           }}

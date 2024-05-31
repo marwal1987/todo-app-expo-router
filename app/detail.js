@@ -55,10 +55,11 @@ export default function Detail() {
         onPress={markDone}
       >Mark as Done</CustomButton>
       <CustomButton
-        bgColor="#dd5555"
+        bgColor="#dd4422"
         width={`70%`}
         rounded={50}
         onPress={deleteTodo}
+        textColor="#f6f6f1"
       >Delete</CustomButton>
     </View>
     </SafeAreaView>
@@ -70,13 +71,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f6f6f1",
     gap: 48,
     
   },
   section: {
     flex: 1,
-    backgroundColor: "#f6f6f1",
     alignItems: "center",
     justifyContent: "center",
     padding: 16,
@@ -85,11 +84,13 @@ const styles = StyleSheet.create({
 
   largeText: {
     fontSize: 36,
+    fontFamily: 'Handlee_400Regular',
 
   },
   mediumText: {
     fontSize: 18,
     maxWidth: "70%",
+    fontFamily: 'Handlee_400Regular',
   },
   doneText: {
     textDecorationLine: 'line-through',

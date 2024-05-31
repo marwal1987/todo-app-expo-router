@@ -9,10 +9,11 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={image} style={styles.image} blurRadius={4}>
-        <Text style={styles.largeText}>GET WORK DONE!</Text>
-        <Text style={styles.mediumText}>Structure your day!</Text>
-        <CustomButton bgColor="#e8c128" width={`50%`} rounded={50} onPress={() => router.push("/home")}>Make a todo-list</CustomButton >
+      <ImageBackground source={image} style={styles.image} blurRadius={6}>
+        <Text style={styles.largeText}>"GET SHIT DONE!"</Text>
+        <Text style={styles.mediumText}>The best defense against chaos is a daily planning ritual. Structure your day!</Text>
+
+        <CustomButton bgColor="#e8c128" width={`50%`} rounded={50} onPress={() => router.push("/home")}>Create a todo-list</CustomButton >
       </ImageBackground>
         </View>
   );
@@ -24,12 +25,18 @@ const styles = StyleSheet.create({
   },
   largeText: {
     fontSize: 36,
-    fontWeight: 'bold',
-    color: "#222",
+    fontFamily: 'Handlee_400Regular',
+    fontWeight: "bold",
+    color: "#000",
+    maxWidth: "80%",
   },
   mediumText: {
     fontSize: 24,
     color: "#222",
+    fontFamily: 'Handlee_400Regular',
+    maxWidth: "80%",
+    textAlign: "center",
+    alignSelf: "",
   },
   image: {
     flex: 1,
@@ -37,7 +44,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: "center",
-    gap: 48,
+    gap: 72,
     
   },
 });

@@ -31,7 +31,7 @@ export default function Home() {
         style={styles.item}
       >
         <Text style={styles.mediumText}>{item.text}</Text>
-        <Icon name="chevron-right" size={14} color="#9c64ce99" />
+        <Icon name="chevron-right" size={14} color="#9c64ce88" />
       </TouchableOpacity>
     );
   }
@@ -48,7 +48,7 @@ export default function Home() {
         style={styles.itemDone}
       >
         <Text style={[styles.mediumText, styles.doneText]}>{item.text}</Text>
-        <Icon name="chevron-right" size={14} color="#9c64ce99" />
+        <Icon name="chevron-right" size={14} color="#e8c128" />
       </TouchableOpacity>
     );
   }
@@ -75,48 +75,46 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: "#f6f6f1",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 16,
-    marginBottom: 16,
-    marginTop: 16,
-    gap: 16,
-    
+    marginVertical: 48,
+    gap: 8,
   },
   item: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: 'space-between',
-    padding: 12,
-    marginVertical: 8,
-    backgroundColor: "#e8c128bb",
+    justifyContent: "space-between",
+    padding: 16,
+    marginBottom: 16,
+    backgroundColor: "#e8c12899",
     minWidth: "80%",
-    borderRadius: 5,
-    
+    borderRadius: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: "#9c64ce55",
   },
   itemDone: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: 'space-between',
-    padding: 12,
+    justifyContent: "space-between",
+    padding: 16,
     marginVertical: 8,
-    backgroundColor: "#9c64ce60",
+    backgroundColor: "#9c64ce88",
     minWidth: "80%",
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: "#e8c12888",
   },
   largeText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontSize: 32,
+    // fontWeight: "bold",
+    textAlign: "center",
+    fontFamily: "Handlee_400Regular",
   },
   mediumText: {
     fontSize: 18,
-  },
-  smallText: {
-    fontSize: 14,
+    fontFamily: "Handlee_400Regular",
   },
   doneText: {
     textDecorationLine: "line-through",
