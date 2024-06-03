@@ -31,7 +31,7 @@ export default function Home() {
         style={styles.item}
       >
         <Text style={styles.mediumText}>{item.text}</Text>
-        <Icon name="chevron-right" size={14} color="#9c64ce88" />
+        <Icon name="chevron-right" size={14} color="#9c64cedd" />
       </TouchableOpacity>
     );
   }
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     minWidth: "80%",
     borderRadius: 10,
     borderBottomWidth: 2,
-    borderBottomColor: "#9c64ce55",
+    borderBottomColor: "#9c64ce88",
   },
   itemDone: {
     flexDirection: "row",

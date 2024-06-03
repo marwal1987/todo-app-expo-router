@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, Button } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import CustomButton from "../components/CustomButton";
+import CustomLink from "../components/CustomLink";
 import { useLocalSearchParams } from "expo-router";
 import { TodosContext } from "../contexts/TodosContext";
 import { useRouter } from "expo-router";
-
 
 export default function Detail() {
   const router = useRouter();
@@ -16,52 +16,71 @@ export default function Detail() {
     return (
       <View style={styles.container}>
         <Text style={styles.largeText}>Todo deleted!</Text>
-        <CustomButton
-        bgColor="#9c64ce"
-        width={`55%`}
-        rounded={50}
-        onPress={() => router.back()}
-      >Back to home</CustomButton>
+        <CustomLink bgColor="#9c64ce" width="55%" rounded={50} href={"/home"}>
+          Back to home
+        </CustomLink>
       </View>
     );
   }
 
-  function markDone (){
+  function markDone() {
     setTodos((prevTodos) =>
       prevTodos.map((t) => (t.id === todo.id ? { ...t, done: true } : t))
     );
     router.push("/home");
-  };
+  }
 
-  function deleteTodo (){
+  function markUndone() {
+    setTodos((prevTodos) =>
+      prevTodos.map((t) => (t.id === todo.id ? { ...t, done: false } : t))
+    );
+    router.push("/home");
+  }
+
+  function deleteTodo() {
     setTodos((prevTodos) => prevTodos.filter((t) => t.id !== todo.id));
-  };
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-    <View style={styles.section}>
-      <Text style={[styles.largeText, todo.done && styles.doneText]}>
-        {todo.text}
-      </Text>
-      <Text style={[styles.mediumText, todo.done && styles.doneText]}>
-        {todo.description}
-      </Text>
+      <View style={styles.section}>
+        <Text style={[styles.largeText, todo.done && styles.doneText]}>
+          {todo.text}
+        </Text>
+        <Text style={[styles.mediumText, todo.done && styles.doneText]}>
+          {todo.description}
+        </Text>
       </View>
       <View style={styles.section}>
-      <CustomButton
-        bgColor="#e8c128"
-        width={`70%`}
-        rounded={50}
-        onPress={markDone}
-      >Mark as Done</CustomButton>
-      <CustomButton
-        bgColor="#dd4422"
-        width={`70%`}
-        rounded={50}
-        onPress={deleteTodo}
-        textColor="#f6f6f1"
-      >Delete</CustomButton>
-    </View>
+        {!todo.done ? (
+          <CustomButton
+            bgColor="#e8c128"
+            width="70%"
+            rounded={50}
+            onPress={markDone}
+          >
+            Mark as Done
+          </CustomButton>
+        ) : (
+          <CustomButton
+            bgColor="#e8c128"
+            width="70%"
+            rounded={50}
+            onPress={markUndone}
+          >
+            Mark as Undone
+          </CustomButton>
+        )}
+        <CustomButton
+          bgColor="#dd4422"
+          width="70%"
+          rounded={50}
+          onPress={deleteTodo}
+          textColor="#f6f6f1"
+        >
+          Delete
+        </CustomButton>
+      </View>
     </SafeAreaView>
   );
 }
@@ -72,7 +91,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 48,
-    
   },
   section: {
     flex: 1,
@@ -84,16 +102,15 @@ const styles = StyleSheet.create({
 
   largeText: {
     fontSize: 36,
-    fontFamily: 'Handlee_400Regular',
-
+    fontFamily: "Handlee_400Regular",
   },
   mediumText: {
     fontSize: 18,
     maxWidth: "70%",
-    fontFamily: 'Handlee_400Regular',
+    fontFamily: "Handlee_400Regular",
   },
   doneText: {
-    textDecorationLine: 'line-through',
-    color: 'gray',
+    textDecorationLine: "line-through",
+    color: "gray",
   },
 });

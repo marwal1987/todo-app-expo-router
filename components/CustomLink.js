@@ -1,21 +1,34 @@
+import React from 'react';
+import { Text, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function StyledLink({ children, href }) {
+export default function Button(props) {
+  const { href, children, textColor, bgColor, rounded, py, px, width } = props;
+  const styles = StyleSheet.create({
+    link: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: px || 12,
+      paddingHorizontal: py,
+      borderRadius: rounded,
+      elevation: 3,
+      backgroundColor: bgColor,
+      minWidth: width,
+      textAlign: "center",
+    },
+    text: {
+      fontSize: 16,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: textColor,
+    },
+  });
+  
   return (
-    <TouchableOpacity style={styles.linkContainer} onPress={() => {/* Hantera klickhändelse */}}>
-      <Link href={href}>
-        <Text style={styles.linkText}>{children}</Text>
-      </Link>
-    </TouchableOpacity>
+    <Link style={styles.link} href={href}>
+      <Text style={styles.text}>{children}</Text>
+    </Link>
   );
 }
 
-const styles = StyleSheet.create({
-  linkContainer: {
-    // Stilar för länkbehållare
-  },
-  linkText: {
-    // Stilar för länktext
-  },
-});

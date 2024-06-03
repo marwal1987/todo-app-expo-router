@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import CustomButton from "../components/CustomButton";
 import { useRouter } from "expo-router";
 import { TodosContext } from "../contexts/TodosContext";
@@ -37,7 +37,7 @@ export default function Add() {
       />
       <CustomButton
         bgColor="#e8c128"
-        width={`90%`}
+        width="90%"
         rounded={50}
         onPress={addTodo}
       >
@@ -45,7 +45,7 @@ export default function Add() {
       </CustomButton>
       <CustomButton
         bgColor="#9c64ce"
-        width={`90%`}
+        width="90%"
         rounded={50}
         onPress={() => router.back()}
       >

@@ -13,6 +13,7 @@ export default function Button(props) {
       elevation: 3,
       backgroundColor: bgColor,
       minWidth: width,
+      textAlign: "center",
     },
     text: {
       fontSize: 16,

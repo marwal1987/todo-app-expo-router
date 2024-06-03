@@ -1,16 +1,36 @@
 import { Stack } from "expo-router";
+import { useState, useEffect } from "react";
 import { TodosProvider } from "../contexts/TodosContext";
 import Icon from "react-native-vector-icons/FontAwesome";
-import CustomButton from "../components/CustomButton"
-import { useRouter } from "expo-router";
-import { useFonts, Handlee_400Regular } from '@expo-google-fonts/handlee';
+import CustomLink from "../components/CustomLink";
+import { useFonts, Handlee_400Regular } from "@expo-google-fonts/handlee";
+import { StyleSheet, ImageBackground } from "react-native";
+
+const image = require("../assets/images/todo.jpg");
 
 export default function RootLayout() {
-  const router = useRouter();
 
- useFonts({
+  const [showBackground, setShowBackground] = useState(true);
+
+  const [fontsLoaded] = useFonts({
     Handlee_400Regular,
   });
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowBackground(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (!fontsLoaded || showBackground) {
+    return (
+      <ImageBackground source={image} style={styles.image}>
+        
+      </ImageBackground>
+    );
+  }
 
   return (
     <TodosProvider>
@@ -23,7 +43,6 @@ export default function RootLayout() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
-          
         }}
       >
         <Stack.Screen
@@ -38,10 +57,15 @@ export default function RootLayout() {
           options={{
             title: "Home",
             headerRight: () => (
-              <CustomButton bgColor="#9c64ce" py={12} px={8} rounded={50}
-              onPress={() => router.push("/add")}>
-                <Icon name="plus" size={15} color="#222222aa" />
-              </CustomButton>
+              <CustomLink
+                bgColor="#9c64cedd"
+                py={12}
+                px={8}
+                rounded={50}
+                href={"/add"}
+              >
+                <Icon name="plus" size={15} color="#e8c128" />
+              </CustomLink>
             ),
           }}
         />
@@ -62,3 +86,11 @@ export default function RootLayout() {
     </TodosProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    width: "100%",
+    resizeMode: "cover",
+  },
+});

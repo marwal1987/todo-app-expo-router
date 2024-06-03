@@ -3,13 +3,13 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "npx expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "android": "npx expo start --android",
+    "ios": "npx expo start --ios",
+    "web": "npx expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "npx expo lint"
   },
   "jest": {
     "preset": "jest-expo"
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@expo/cli": "^0.18.14",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.0.7",
