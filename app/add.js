@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput, Dimensions,
+  Platform } from "react-native";
 import CustomButton from "../components/CustomButton";
 import { useRouter } from "expo-router";
 import { TodosContext } from "../contexts/TodosContext";
@@ -37,7 +38,7 @@ export default function Add() {
       />
       <CustomButton
         bgColor="#e8c128"
-        width="90%"
+        width={Platform.OS === 'web' ? '300px' : width * 0.8}
         rounded={50}
         onPress={addTodo}
       >
@@ -45,7 +46,7 @@ export default function Add() {
       </CustomButton>
       <CustomButton
         bgColor="#9c64ce"
-        width="90%"
+        width={Platform.OS === 'web' ? '300px' : width * 0.8}
         rounded={50}
         onPress={() => router.back()}
       >
@@ -54,6 +55,8 @@ export default function Add() {
     </View>
   );
 }
+
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -70,12 +73,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 8,
     paddingHorizontal: 8,
-    width: "90%",
+    width: Platform.OS === 'web' ? '300px' : width * 0.8,
     fontFamily: "Handlee_400Regular",
     fontSize: 18,
   },
   largeText: {
     fontSize: 32,
     fontFamily: "Handlee_400Regular",
+    textAlign: "center",
   },
 });

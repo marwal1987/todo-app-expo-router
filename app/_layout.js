@@ -9,7 +9,6 @@ import { StyleSheet, ImageBackground } from "react-native";
 const image = require("../assets/images/todo.jpg");
 
 export default function RootLayout() {
-
   const [showBackground, setShowBackground] = useState(true);
 
   const [fontsLoaded] = useFonts({
@@ -26,9 +25,7 @@ export default function RootLayout() {
 
   if (!fontsLoaded || showBackground) {
     return (
-      <ImageBackground source={image} style={styles.image}>
-        
-      </ImageBackground>
+      <ImageBackground source={image} style={styles.image}></ImageBackground>
     );
   }
 
@@ -39,7 +36,7 @@ export default function RootLayout() {
           headerStyle: {
             backgroundColor: "#e8c128",
           },
-          headerTintColor: "#222",
+          headerTintColor: "#000",
           headerTitleStyle: {
             fontWeight: "bold",
           },
@@ -58,7 +55,7 @@ export default function RootLayout() {
             title: "Home",
             headerRight: () => (
               <CustomLink
-                bgColor="#9c64cedd"
+                bgColor="#9c64ce"
                 py={12}
                 px={8}
                 rounded={50}

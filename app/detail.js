@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Dimensions,
+  Platform } from "react-native";
 import CustomButton from "../components/CustomButton";
 import CustomLink from "../components/CustomLink";
 import { useLocalSearchParams } from "expo-router";
@@ -55,7 +56,7 @@ export default function Detail() {
         {!todo.done ? (
           <CustomButton
             bgColor="#e8c128"
-            width="70%"
+            width={Platform.OS === 'web' ? '300px' : width * 0.5}
             rounded={50}
             onPress={markDone}
           >
@@ -64,7 +65,7 @@ export default function Detail() {
         ) : (
           <CustomButton
             bgColor="#e8c128"
-            width="70%"
+            width={Platform.OS === 'web' ? '300px' : width * 0.5}
             rounded={50}
             onPress={markUndone}
           >
@@ -73,7 +74,7 @@ export default function Detail() {
         )}
         <CustomButton
           bgColor="#dd4422"
-          width="70%"
+          width={Platform.OS === 'web' ? '300px' : width * 0.5}
           rounded={50}
           onPress={deleteTodo}
           textColor="#f6f6f1"
@@ -84,6 +85,8 @@ export default function Detail() {
     </SafeAreaView>
   );
 }
+
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -99,18 +102,20 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 48,
   },
-
   largeText: {
     fontSize: 36,
     fontFamily: "Handlee_400Regular",
+    textAlign: "center",
   },
   mediumText: {
     fontSize: 18,
     maxWidth: "70%",
     fontFamily: "Handlee_400Regular",
+    textAlign: "center",
   },
   doneText: {
     textDecorationLine: "line-through",
     color: "gray",
+    textAlign: "center",
   },
 });

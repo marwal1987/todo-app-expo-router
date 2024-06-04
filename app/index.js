@@ -9,11 +9,13 @@ export default function Index() {
       <ImageBackground source={image} style={styles.image} blurRadius={6}>
         <Text style={styles.largeText}>"GET SHIT DONE!"</Text>
         <Text style={styles.mediumText}>
-          The best defense against chaos is a daily planning ritual. Structure
-          your day!
+          The best defense against chaos is a daily planning ritual.
+        </Text>
+        <Text style={styles.mediumText}>
+          Structure your day!
         </Text>
 
-        <CustomLink bgColor="#e8c128" width="50%" rounded={50} href={"/home"}>
+        <CustomLink bgColor="#e8c128" width="200px" rounded={50} href={"/home"}>
           Create a todo-list
         </CustomLink>
       </ImageBackground>
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
     maxWidth: "80%",
+    textAlign: "center",
   },
   mediumText: {
     fontSize: 24,
@@ -38,7 +41,6 @@ const styles = StyleSheet.create({
     fontFamily: "Handlee_400Regular",
     maxWidth: "80%",
     textAlign: "center",
-    alignSelf: "",
   },
   image: {
     flex: 1,

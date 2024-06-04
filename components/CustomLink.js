@@ -2,14 +2,14 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
 
-export default function Button(props) {
+export default function CustomLink(props) {
   const { href, children, textColor, bgColor, rounded, py, px, width } = props;
   const styles = StyleSheet.create({
     link: {
       alignItems: 'center',
       justifyContent: 'center',
       paddingVertical: px || 12,
-      paddingHorizontal: py,
+      paddingHorizontal: py || 24,
       borderRadius: rounded,
       elevation: 3,
       backgroundColor: bgColor,
