@@ -12,10 +12,8 @@ import {
   SectionList,
   Dimensions,
   Platform,
+  Section,
 } from "react-native";
-
-const { width, height } = Dimensions.get("window");
-const isIpad = Platform.OS === "ios" && width >= 768 && height >= 1024;
 
 export default function Home() {
   const { todos } = useContext(TodosContext);
@@ -63,55 +61,42 @@ export default function Home() {
       {notDoneTodos.length === 0 ? (
         <View style={styles.container}>
           <Text style={styles.largeText}>Nothing more to do!</Text>
-          <CustomLink
-                bgColor="#9c64ce"
-                py={8}
-                px={12}
-                rounded={50}
-                href={"/add"}
-              >
-                <Icon name="plus" size={15} color="#e8c128" />
-              </CustomLink>
+          <CustomLink bgColor="#e8c128" rounded={50} href={"/add"}>
+            Add Todo
+          </CustomLink>
         </View>
       ) : (
         <>
-        <Text style={styles.largeText}>ToDo</Text>
-        <FlatList
-          data={notDoneTodos}
-          renderItem={renderNotDoneTodos}
-          keyExtractor={(item) => item.id.toString()}
-          style={styles.list}
-          contentContainerStyle={styles.listContent}
-        />
+          <Text style={styles.largeText}>ToDo</Text>
+          <FlatList
+            data={notDoneTodos}
+            renderItem={renderNotDoneTodos}
+            keyExtractor={(item) => item.id.toString()}
+          />
         </>
       )}
+
+      <Text style={styles.largeText}>Completed</Text>
       <SectionList
-        sections={[{ title: "Completed", data: doneTodos }]}
+        sections={[{ data: doneTodos }]}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderDoneTodos}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.largeText}>{title}</Text>
-        )}
-        style={styles.list}
-        contentContainerStyle={styles.listContent}
       />
     </View>
   );
 }
 
+const { width } = Dimensions.get("window");
+const isIpad = Platform.OS === "ios" && width >= 768;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     marginVertical: 48,
-    gap: 8,
-  },
-  list: {
-    width: "100%",
-  },
-  listContent: {
-    alignItems: "center",
+
+    // gap: isIpad ? 48 : 24,
   },
   item: {
     flexWrap: "wrap",
@@ -120,13 +105,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 12,
     paddingHorizontal: 12,
-    marginBottom: 16,
+    marginBottom: 12,
     backgroundColor: "#e8c12899",
     width:
       Platform.OS === "web"
         ? "300px"
         : isIpad
-        ? width * 0.6 // Adjust width for iPad
+        ? width * 0.5 // Adjust width for iPad
         : width * 0.8, // Default width for mobile
     borderRadius: 10,
     borderBottomWidth: 2,
@@ -139,20 +124,20 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 12,
     paddingHorizontal: 12,
-    marginVertical: 8,
+    marginBottom: 12,
     backgroundColor: "#9c64ce88",
     width:
       Platform.OS === "web"
         ? "300px"
         : isIpad
-        ? width * 0.6 // Adjust width for iPad
+        ? width * 0.5 // Adjust width for iPad
         : width * 0.8, // Default width for mobile
     borderRadius: 10,
     borderBottomWidth: 2,
     borderBottomColor: "#e8c12888",
   },
   largeText: {
-    fontSize: 36,
+    fontSize: isIpad ? 48 : 36,
     textAlign: "center",
     fontFamily: "Handlee_400Regular",
   },

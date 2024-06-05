@@ -66,8 +66,8 @@ export default function Add() {
   );
 }
 
-const { width, height } = Dimensions.get("window");
-const isIpad = Platform.OS === "ios" && width >= 768 && height >= 1024;
+const { width } = Dimensions.get("window");
+const isIpad = Platform.OS === "ios" && width >= 768;
 
 const styles = StyleSheet.create({
   container: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   largeText: {
-    fontSize: 32,
+    fontSize: isIpad ? 48 : 36,
     fontFamily: "Handlee_400Regular",
     textAlign: "center",
   },

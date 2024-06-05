@@ -9,35 +9,21 @@ export function TodosProvider({ children }) {
         id: 1,
         text: "Project planing",
         description:
-          "Some long description about the todo, just to make sure the that the line break is good",
+          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
         done: false,
       },
       {
         id: 2,
         text: "Inspiration",
         description:
-          "Some long description about the todo, just to make sure the that the line break is good",
-        done: false,
-      },
-      {
-        id: 3,
-        text: "Lunch meeting",
-        description:
-          "Some long description about the todo, just to make sure the that the line break is good",
+          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
         done: true,
       },
       {
-        id: 4,
-        text: "Replace Button with Link",
-        description:
-          "Some long description about the todo, just to make sure the that the line break is good",
-        done: false,
-      },
-      {
-        id: 5,
+        id: 3,
         text: "Walk the dog",
         description:
-          "Some long description about the todo, just to make sure the that the line break is good",
+          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
         done: true,
       },
     ];

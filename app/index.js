@@ -11,12 +11,10 @@ export default function Index() {
         <Text style={styles.mediumText}>
           The best defense against chaos is a daily planning ritual.
         </Text>
-        <Text style={styles.mediumText}>
-          Structure your day!
-        </Text>
+        <Text style={styles.mediumText}>Structure your day!</Text>
 
         <CustomLink bgColor="#e8c128" width="200px" rounded={50} href={"/home"}>
-          Create a todo-list
+          Start Now
         </CustomLink>
       </ImageBackground>
     </View>

@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
 import { useState, useEffect } from "react";
 import { TodosProvider } from "../contexts/TodosContext";
-import Icon from "react-native-vector-icons/FontAwesome";
 import CustomLink from "../components/CustomLink";
 import { useFonts, Handlee_400Regular } from "@expo-google-fonts/handlee";
 import { StyleSheet, ImageBackground } from "react-native";
@@ -45,27 +44,15 @@ export default function RootLayout() {
         <Stack.Screen
           name="index"
           options={{
-            title: "",
             headerShown: false,
+            title: "",
           }}
         />
         <Stack.Screen
           name="home"
           options={{
             title: "Home",
-            headerRight: () => (
-              <CustomLink
-                href={"/add"}
-                bgColor="#9c64ce"
-                py={8}
-                px={12}
-                rounded={50}
-                textColor="#000"
-              >
-                {/* Add */}
-                <Icon name="plus" size={15} color="#e8c128" />
-              </CustomLink>
-            ),
+            headerRight: () => <CustomLink href={"/add"}>Add</CustomLink>,
           }}
         />
         <Stack.Screen

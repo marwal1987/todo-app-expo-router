@@ -39,7 +39,13 @@ export default function Detail() {
         <Text style={styles.largeText}>Todo deleted!</Text>
         <CustomLink
           bgColor="#9c64ce"
-          width={Platform.OS === "web" ? "300px" : width * 0.5}
+          width={
+            Platform.OS === "web"
+              ? "300px"
+              : isIpad
+              ? width * 0.5 // Adjust width for iPad
+              : width * 0.8
+          } // Default width for mobile}
           rounded={50}
           href={"/home"}
         >
@@ -67,7 +73,13 @@ export default function Detail() {
         {!todo.done ? (
           <CustomButton
             bgColor="#e8c128"
-            width={Platform.OS === "web" ? "300px" : width * 0.5}
+            width={
+              Platform.OS === "web"
+                ? "300px"
+                : isIpad
+                ? width * 0.5 // Adjust width for iPad
+                : width * 0.8
+            }
             rounded={50}
             onPress={markDone}
           >
@@ -76,7 +88,13 @@ export default function Detail() {
         ) : (
           <CustomButton
             bgColor="#e8c128"
-            width={Platform.OS === "web" ? "300px" : width * 0.5}
+            width={
+              Platform.OS === "web"
+                ? "300px"
+                : isIpad
+                ? width * 0.5 // Adjust width for iPad
+                : width * 0.8
+            }
             rounded={50}
             onPress={markUndone}
           >
@@ -85,7 +103,13 @@ export default function Detail() {
         )}
         <CustomButton
           bgColor="#dd4422"
-          width={Platform.OS === "web" ? "300px" : width * 0.5}
+          width={
+            Platform.OS === "web"
+              ? "300px"
+              : isIpad
+              ? width * 0.5 // Adjust width for iPad
+              : width * 0.8
+          }
           rounded={50}
           onPress={deleteTodo}
           textColor="#f6f6f1"
@@ -98,6 +122,7 @@ export default function Detail() {
 }
 
 const { width } = Dimensions.get("window");
+const isIpad = Platform.OS === "ios" && width >= 768;
 
 const styles = StyleSheet.create({
   container: {
@@ -107,6 +132,7 @@ const styles = StyleSheet.create({
     gap: 24,
   },
   section: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 16,
@@ -119,7 +145,12 @@ const styles = StyleSheet.create({
   },
   mediumText: {
     fontSize: 18,
-    maxWidth: "70%",
+    width:
+      Platform.OS === "web"
+        ? "300px"
+        : isIpad
+        ? width * 0.5 // Adjust width for iPad
+        : width * 0.8, // Default width for mobile
     fontFamily: "Handlee_400Regular",
     textAlign: "center",
   },
