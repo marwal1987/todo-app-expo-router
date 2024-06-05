@@ -18,7 +18,7 @@ export default function RootLayout() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowBackground(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -55,12 +55,14 @@ export default function RootLayout() {
             title: "Home",
             headerRight: () => (
               <CustomLink
-                bgColor="#9c64ce"
-                py={12}
-                px={8}
-                rounded={50}
                 href={"/add"}
+                bgColor="#9c64ce"
+                py={8}
+                px={12}
+                rounded={50}
+                textColor="#000"
               >
+                {/* Add */}
                 <Icon name="plus" size={15} color="#e8c128" />
               </CustomLink>
             ),

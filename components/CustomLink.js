@@ -1,34 +1,35 @@
-import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
+import React from "react";
+import { Text, StyleSheet, Pressable } from "react-native";
+import { Link } from "expo-router";
 
 export default function CustomLink(props) {
   const { href, children, textColor, bgColor, rounded, py, px, width } = props;
   const styles = StyleSheet.create({
-    link: {
+    linkContainer: {
+      overflow: 'hidden',
+      borderRadius: rounded,
+      backgroundColor: bgColor,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: px || 12,
-      paddingHorizontal: py || 24,
-      borderRadius: rounded,
-      elevation: 3,
-      backgroundColor: bgColor,
+      paddingVertical: py || 12,
+      paddingHorizontal: px || 24,
       minWidth: width,
-      textAlign: "center",
     },
     text: {
       fontSize: 16,
       lineHeight: 21,
-      fontWeight: 'bold',
+      fontWeight: "bold",
       letterSpacing: 0.25,
       color: textColor,
+      textAlign: "center",
     },
   });
-  
+
   return (
-    <Link style={styles.link} href={href}>
-      <Text style={styles.text}>{children}</Text>
+    <Pressable style={styles.linkContainer}>
+    <Link href={href}>
+        <Text style={styles.text}>{children}</Text>
     </Link>
+    </Pressable>
   );
 }
-

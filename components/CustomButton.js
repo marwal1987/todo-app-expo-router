@@ -7,8 +7,8 @@ export default function Button(props) {
     button: {
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: px || 12,
-      paddingHorizontal: py || 24,
+      paddingVertical: py || 12,
+      paddingHorizontal: px || 24,
       borderRadius: rounded,
       elevation: 3,
       backgroundColor: bgColor,

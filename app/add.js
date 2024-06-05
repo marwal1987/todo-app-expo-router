@@ -1,6 +1,12 @@
 import { useState, useContext } from "react";
-import { StyleSheet, Text, View, TextInput, Dimensions,
-  Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Dimensions,
+  Platform,
+} from "react-native";
 import CustomButton from "../components/CustomButton";
 import { useRouter } from "expo-router";
 import { TodosContext } from "../contexts/TodosContext";
@@ -38,7 +44,9 @@ export default function Add() {
       />
       <CustomButton
         bgColor="#e8c128"
-        width={Platform.OS === 'web' ? '300px' : width * 0.8}
+        width={
+          Platform.OS === "web" ? "300px" : isIpad ? width * 0.5 : width * 0.8
+        }
         rounded={50}
         onPress={addTodo}
       >
@@ -46,7 +54,9 @@ export default function Add() {
       </CustomButton>
       <CustomButton
         bgColor="#9c64ce"
-        width={Platform.OS === 'web' ? '300px' : width * 0.8}
+        width={
+          Platform.OS === "web" ? "300px" : isIpad ? width * 0.5 : width * 0.8
+        }
         rounded={50}
         onPress={() => router.back()}
       >
@@ -56,7 +66,8 @@ export default function Add() {
   );
 }
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
+const isIpad = Platform.OS === "ios" && width >= 768 && height >= 1024;
 
 const styles = StyleSheet.create({
   container: {
@@ -64,16 +75,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 16,
-    gap: 16,
+    gap: 24,
   },
   input: {
     height: 40,
     borderColor: "#ddd",
     borderWidth: 2,
-    borderRadius: 4,
-    marginBottom: 8,
-    paddingHorizontal: 8,
-    width: Platform.OS === 'web' ? '300px' : width * 0.8,
+    borderRadius: 50,
+    paddingHorizontal: 16,
+    width:
+      Platform.OS === "web"
+        ? "300px" // Adjust width for Web
+        : isIpad
+        ? width * 0.5 // Adjust width for iPad
+        : width * 0.8, // Default width for mobile
     fontFamily: "Handlee_400Regular",
     fontSize: 18,
   },

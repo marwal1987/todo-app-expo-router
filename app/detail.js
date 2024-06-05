@@ -1,6 +1,12 @@
 import { useContext } from "react";
-import { StyleSheet, Text, View, SafeAreaView, Dimensions,
-  Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Dimensions,
+  Platform,
+} from "react-native";
 import CustomButton from "../components/CustomButton";
 import CustomLink from "../components/CustomLink";
 import { useLocalSearchParams } from "expo-router";
@@ -12,17 +18,6 @@ export default function Detail() {
   const { id } = useLocalSearchParams();
   const { todos, setTodos } = useContext(TodosContext);
   const todo = todos.find((t) => t.id === Number(id));
-
-  if (!todo) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.largeText}>Todo deleted!</Text>
-        <CustomLink bgColor="#9c64ce" width="55%" rounded={50} href={"/home"}>
-          Back to home
-        </CustomLink>
-      </View>
-    );
-  }
 
   function markDone() {
     setTodos((prevTodos) =>
@@ -36,6 +31,22 @@ export default function Detail() {
       prevTodos.map((t) => (t.id === todo.id ? { ...t, done: false } : t))
     );
     router.push("/home");
+  }
+
+  if (!todo) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.largeText}>Todo deleted!</Text>
+        <CustomLink
+          bgColor="#9c64ce"
+          width={Platform.OS === "web" ? "300px" : width * 0.5}
+          rounded={50}
+          href={"/home"}
+        >
+          Go back!
+        </CustomLink>
+      </View>
+    );
   }
 
   function deleteTodo() {
@@ -56,7 +67,7 @@ export default function Detail() {
         {!todo.done ? (
           <CustomButton
             bgColor="#e8c128"
-            width={Platform.OS === 'web' ? '300px' : width * 0.5}
+            width={Platform.OS === "web" ? "300px" : width * 0.5}
             rounded={50}
             onPress={markDone}
           >
@@ -65,7 +76,7 @@ export default function Detail() {
         ) : (
           <CustomButton
             bgColor="#e8c128"
-            width={Platform.OS === 'web' ? '300px' : width * 0.5}
+            width={Platform.OS === "web" ? "300px" : width * 0.5}
             rounded={50}
             onPress={markUndone}
           >
@@ -74,7 +85,7 @@ export default function Detail() {
         )}
         <CustomButton
           bgColor="#dd4422"
-          width={Platform.OS === 'web' ? '300px' : width * 0.5}
+          width={Platform.OS === "web" ? "300px" : width * 0.5}
           rounded={50}
           onPress={deleteTodo}
           textColor="#f6f6f1"
@@ -93,14 +104,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 48,
+    gap: 24,
   },
   section: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 16,
-    gap: 48,
+    gap: 16,
   },
   largeText: {
     fontSize: 36,
